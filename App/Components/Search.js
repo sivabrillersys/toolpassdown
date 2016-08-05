@@ -9,6 +9,7 @@ import {
   AsyncStorage,
   StyleSheet,
   Text,
+  TextInput,
   Picker,
   TouchableOpacity,
   View
@@ -52,39 +53,6 @@ export default class SetCdp extends Component {
 
   _onPressButton() {
 
-    AsyncStorage.setItem('CDP', this.state.cdp);
-
-    //Backend Call
-    // relayURL = relayURL + '?DoLogin';
-    // var params = {id: 1, UserName: this.state.uname, Password: this.state.password, CDPName: this.state.cdp};
-
-    // console.log(params);
-
-    // fetch(relayURL, {
-    //   method: "POST", 
-    //   contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-    //   body: params
-    // })
-    // .then((response) => response.json())
-    // .then((responseData) => {
-
-    //     console.log(responseData);
-
-        // if (responseData[0].result.ISAUTHENTICATED) //Success
-        // {
-        //   AsyncStorage.setItem('CDP', this.state.cdp));
-
-        
-        // }
-        // else //Failed
-        // {
-        //   this.setState({message: responseData[0].result.ERRORMESSAGE});
-        // }
-    // })
-    // .done();
-
-    //Redirect to Search Page on success
-    Actions.Search(); 
   }
 
   render() {
@@ -92,25 +60,28 @@ export default class SetCdp extends Component {
     return (
       <View style={styles.containerBox}>
         
-        <Text style={styles.error}>{this.state.message}</Text>
+        <Text style={styles.label}>Equipment Type<Text style={styles.mandatory}>*</Text></Text>         
+        <TextInput style={styles.input} editable={false} value='' />
 
-        <ModalPicker
-        data={this.state.cdplist}
-        initValue="Select CDP"
-        onChange={(option)=>{this.setState({cdp:option.CDPName})}}>
+        <Text style={styles.label}>Equipment<Text style={styles.mandatory}>*</Text></Text>         
+        <TextInput style={styles.input} editable={false} value='' />
 
-          <TextInput
-          style={styles.input}
-          editable={false}
-          placeholder="Select CDP"
-          value={this.state.cdp} />
+        <Text style={styles.label}>From Date<Text style={styles.mandatory}>*</Text></Text>         
+        <TextInput style={styles.input} editable={false} value='07/05/2016 07:22 PM' />
 
-        </ModalPicker>
+        <Text style={styles.label}>To Date<Text style={styles.mandatory}>*</Text></Text>         
+        <TextInput style={styles.input} editable={false} value='08/05/2016 07:22 PM' />
+
+        <Text style={styles.label}>Search Text</Text>         
+        <TextInput style={styles.input} value='' />
 
         <TouchableOpacity onPress={this._onPressButton.bind(this)} style={styles.button} activeOpacity={0.8}>
-          <Text style={styles.buttonText}>Continue</Text>
+          <Text style={styles.buttonText}>Get PassDown</Text>
         </TouchableOpacity> 
 
+        <TouchableOpacity onPress={this._onPressButton.bind(this)} style={styles.button} activeOpacity={0.8}>
+          <Text style={styles.buttonText}>Add PassDown</Text>
+        </TouchableOpacity> 
       </View>
     );
   }

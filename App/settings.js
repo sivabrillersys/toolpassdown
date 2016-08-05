@@ -4,7 +4,7 @@
 
 //----------------------------------------
 // Change the following to switch between DEVEL and PRODUCTION
-var DEV = 1; //1 Development, 0 Production
+var DEV = 0; //1 Development, 0 Production
 //----------------------------------------
 
 var ServerName = (DEV) ? 'http://10.2.31.117/web-rp/' : 'https://informatics.intermolecular.com/';

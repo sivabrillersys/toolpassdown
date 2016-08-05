@@ -43,6 +43,14 @@ var styles = StyleSheet.create({
   barButtonIconStyle:{
     tintColor:'rgb(255,255,255)'
   },
+  label: {
+    fontSize: 12,
+    color: '#777777',
+    marginBottom: 3
+  },
+  mandatory: {
+    color: '#FF0000'
+  },
   input: {
     fontSize: 14,
     borderWidth: 1,
@@ -60,6 +68,7 @@ var styles = StyleSheet.create({
     paddingVertical: 7,
     paddingHorizontal: 5,
     borderRadius: 5,
+    marginBottom: 5
   },
   buttonText: {
     color: '#FFF',
