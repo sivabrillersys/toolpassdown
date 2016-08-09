@@ -51,8 +51,10 @@ var styles = StyleSheet.create({
   mandatory: {
     color: '#FF0000'
   },
+  scrollView: {
+    paddingBottom: 25,
+  },
   input: {
-    fontSize: 14,
     borderWidth: 1,
     borderColor: '#72bf44',
     height: 34,
@@ -76,7 +78,14 @@ var styles = StyleSheet.create({
     textAlign: 'center',
     fontWeight: 'bold',
   },
-
+  inputIcon: {
+    position: 'absolute',
+    top: 4,
+    right: 5,
+    width: 24,
+    fontSize: 24,
+    color: '#666'
+  },
   error: {
     alignSelf: 'center',
     color: '#FF0000',

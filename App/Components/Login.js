@@ -31,7 +31,7 @@ export default class Login extends Component {
       password: 'briller@inter1',
       message: '',
       showProgress: false
-    };
+    };    
   }
 
   _onPressButton() {

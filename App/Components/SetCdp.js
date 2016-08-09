@@ -5,6 +5,7 @@
 
 import React, { Component } from 'react';
 import {
+  ActivityIndicator,
   AppRegistry,
   AsyncStorage,
   StyleSheet,
@@ -17,7 +18,8 @@ import {
 } from 'react-native';
 
 import {Actions} from 'react-native-router-flux';
-import ModalPicker from 'react-native-modal-picker'
+import ModalPicker from 'react-native-modal-picker';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 import styles from '../Styles/style';
 
@@ -31,7 +33,8 @@ export default class SetCdp extends Component {
       cdp: '',
       uname: '',
       password: '',
-      cdplist: []
+      cdplist: [],
+      showProgress: false
     };
   }
 
@@ -39,7 +42,6 @@ export default class SetCdp extends Component {
 
     AsyncStorage.getItem('CDPLIST', (err, cdplist) => {
       this.setState({cdplist:JSON.parse(cdplist)});
-      //console.log(this.state.cdplist);
     });
 
     AsyncStorage.getItem('UNAME', (err, uname) => {
@@ -54,34 +56,27 @@ export default class SetCdp extends Component {
 
   _onPressButton() {
 
+    this.setState({showProgress: true});
     AsyncStorage.setItem('CDP', this.state.cdp);
 
     //Backend Call
     // relayURL = relayURL + '?DoLogin';
     // var params = {id: 1, UserName: this.state.uname, Password: this.state.password, CDPName: this.state.cdp};
 
-    // console.log(relayURL + params);
+    // console.log(params);
 
     // fetch(relayURL, {
     //   method: "POST", 
     //   contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
     //   body: JSON.stringify(params)
     // })
-    // .then((response) => response.json())
-    // .then((responseData) => {
+    // .then((textStatus) => textStatus.json())
+    // .then((textStatus) => {
 
-    //      console.log(responseData);
+    //     console.log(textStatus);
 
-    //     // if (responseData[0].result.ISAUTHENTICATED) //Success
-    //     // {
-    //     //   AsyncStorage.setItem('CDP', this.state.cdp));
-
-        
-    //     // }
-    //     // else //Failed
-    //     // {
-    //     //   this.setState({message: responseData[0].result.ERRORMESSAGE});
-    //     // }
+    //     //Redirect to Search Page on success
+    //     Actions.Search(); 
     // })
     // .done();
 
@@ -110,6 +105,7 @@ export default class SetCdp extends Component {
           editable={false}
           placeholder="Select CDP"
           value={this.state.cdp} />
+          <Icon name='angle-down' size={27} color='#333' style={styles.inputIcon}/>
 
         </ModalPicker>
 
@@ -117,6 +113,12 @@ export default class SetCdp extends Component {
         <TouchableOpacity onPress={this._onPressButton.bind(this)} style={styles.button} activeOpacity={0.8}>
           <Text style={styles.buttonText}>Continue</Text>
         </TouchableOpacity> 
+
+        <ActivityIndicator
+          animating={this.state.showProgress}
+          style={[styles.centering, {height: 80}]}
+          size="large"
+          color='#00467f' />
 
       </View>
     );

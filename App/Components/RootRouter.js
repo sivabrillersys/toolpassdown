@@ -46,7 +46,7 @@ export default class RootRouter extends Component {
                 <Scene component={PassdownList} key='PassdownList' name='PassdownList' title="PassDown List" hideNavBar={false} />
                 <Scene component={PassdownView} key='PassdownView' name='PassdownView' title="PassDown View" hideNavBar={false} />
                 <Scene component={EditPassdown} key='EditPassdown' name='EditPassdown' title="PassDown Edit" hideNavBar={false} />
-                <Scene component={AddPassdown} key='AddPassdown' name='AddPassdown' title="PassDown Add" hideNavBar={false} />
+                <Scene component={AddPassdown} key='AddPassdown' name='AddPassdown' title="Add PassDown" hideNavBar={false} />
             </Scene>
         </Router>
         );
