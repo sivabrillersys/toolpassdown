@@ -5,6 +5,10 @@ var {
 } = React;
 
 var styles = StyleSheet.create({
+  containerBody: {
+    flex: 1,
+    backgroundColor: '#FFF',
+  },
   container: {
     flex: 1,
     backgroundColor: '#FFF',
@@ -16,15 +20,15 @@ var styles = StyleSheet.create({
     paddingHorizontal: 25
   },
   header: {
-      flex:1,
-      justifyContent: 'center',
-      alignItems: 'center',
-      marginBottom: 5,
-      marginTop: 0
+    flex:1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 5,
+    marginTop: 0
   },
   logo: {
-      width: 250,
-      height:110,
+    width: 250,
+    height:110,
   }, 
   centering: {
     alignItems: 'center',
@@ -91,8 +95,17 @@ var styles = StyleSheet.create({
     color: '#FF0000',
     fontSize: 12,
     paddingVertical: 3,
-  } 
-
+  },
+  footer: {
+    position: 'absolute',
+    flex:0.1,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor:'#00467f',
+    flexDirection:'row',
+    height:45,
+  }
 });
 
 module.exports= styles;

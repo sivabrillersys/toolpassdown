@@ -45,30 +45,30 @@ export default class SetCdp extends Component {
   componentDidMount() {  
 
     //Get Equipments
-    // var service = 'targetprecursor.component.TargetManagement';
-    // var method = 'getEquipments';
-    // var args = {};
+    var service = 'targetprecursor.component.TargetManagement';
+    var method = 'getEquipments';
+    var args = {};
 
-    // var rpc = {
-    //     action: 'Relay'
-    //     , method: "binaryExecute"
-    //     , data: [service, method, args]
-    //     , type: 'rpc'
-    //     , tid: 2
-    // };
+    var rpc = {
+        action: 'Relay'
+        , method: "binaryExecute"
+        , data: [service, method, args]
+        , type: 'rpc'
+        , tid: 2
+    };
 
-    // fetch(serviceURL, {
-    //   method: "POST", 
-    //   contentType: 'application/json',
-    //   body: JSON.stringify(rpc)
-    // })
-    // .then((response) => response.json())
-    // .then((responseData) => {
+    fetch(serviceURL, {
+      method: "POST", 
+      contentType: 'application/json',
+      body: JSON.stringify(rpc)
+    })
+    .then((response) => response.json())
+    .then((responseData) => {
       
-    //   console.log(responseData);
+      console.log(responseData);
     
-    // })
-    // .done();
+    })
+    .done();
   }
 
   _onPressButton() {
@@ -118,7 +118,17 @@ export default class SetCdp extends Component {
           onDateChange={(date) => {this.setState({toDate: date})}} />
 
         <Text style={styles.label}>Search Text</Text>         
-        <TextInput style={styles.input} value='' />
+        <TextInput
+          style={styles.input}
+          returnKeyType='next' 
+          autoCapitalize='none' 
+          autoCorrect={false} 
+          keyboardType='default' 
+          maxLength={75} 
+          placeholder='' 
+          value={this.state.searchText}
+          blurOnSubmit={false}
+          onChangeText={(searchText) => this.setState({searchText})} />
 
         <TouchableOpacity onPress={this._onPressButton.bind(this)} style={styles.button} activeOpacity={0.8}>
           <Text style={styles.buttonText}>Get PassDown</Text>

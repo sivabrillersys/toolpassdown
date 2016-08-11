@@ -89,6 +89,9 @@ export default class Login extends Component {
             this.setState({showProgress: false});
           }
       })
+      .catch((error) => {
+        console.error(error);
+      })
       .done();
     }
   }

@@ -34,7 +34,8 @@ export default class SetCdp extends Component {
       uname: '',
       password: '',
       cdplist: [],
-      showProgress: false
+      showProgress: false,
+      message: ''
     };
   }
 
@@ -57,31 +58,51 @@ export default class SetCdp extends Component {
   _onPressButton() {
 
     this.setState({showProgress: true});
-    AsyncStorage.setItem('CDP', this.state.cdp);
 
-    //Backend Call
-    // relayURL = relayURL + '?DoLogin';
-    // var params = {id: 1, UserName: this.state.uname, Password: this.state.password, CDPName: this.state.cdp};
+    if (this.state.cdp == '')
+    {
+      this.setState({message: 'You must select CDP to continue!'});
+      this.setState({showProgress: false});
+    } 
+    else
+    {
+      AsyncStorage.setItem('CDP', this.state.cdp);
 
-    // console.log(params);
+      //Backend Call
+      relayURL = relayURL + '?method=DoLogin&id=1&UserName=' + this.state.uname + '&Password=' + this.state.password + '&CDPName=' + this.state.cdp;
+      //var params = {id: 1, UserName: this.state.uname, Password: this.state.password, CDPName: this.state.cdp};
 
-    // fetch(relayURL, {
-    //   method: "POST", 
-    //   contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-    //   body: JSON.stringify(params)
-    // })
-    // .then((textStatus) => textStatus.json())
-    // .then((textStatus) => {
+      fetch(relayURL, {
+        method: "GET", 
+        Accept: 'application/json',
+        contentType: 'application/x-www-form-urlencoded',
+        body: ''
+      })
+      .then((response) => { 
 
-    //     console.log(textStatus);
+        // console.log(response);
+        // response.json() 
 
-    //     //Redirect to Search Page on success
-    //     Actions.Search(); 
-    // })
-    // .done();
+        if (response.ok) {
 
-    //Redirect to Search Page on success
-    Actions.Search(); 
+          this.setState({showProgress: false});
+
+          //Redirect to PassDwon Summary Page on success
+          Actions.PassdownSummary();
+
+          //Redirect to Search Page on success
+          // Actions.Search();
+        }
+
+      })
+      // .then((responseData) => {
+
+      // })
+      .catch((error) => {
+        console.error(error);
+      })
+      .done();
+    }
   }
 
   render() {

@@ -19,6 +19,7 @@ import PassdownList from './SearchList';
 import PassdownView from './PassdownView';
 import EditPassdown from './EditPassdown';
 import AddPassdown from './AddPassdown';
+import PassdownSummary from './PassdownSummary';
 
 export default class RootRouter extends Component {
 
@@ -40,9 +41,10 @@ export default class RootRouter extends Component {
         return (
         <Router navigationBarStyle={styles.navBar} titleStyle={styles.navBarTitle} barButtonTextStyle={styles.barButtonTextStyle} barButtonIconStyle={styles.barButtonIconStyle}>
             <Scene key="root">
-                <Scene component={Login} key='Login' name='Login' initial={true} hideNavBar={true} type={ActionConst.REPLACE}/>
+                <Scene component={Login} key='Login' name='Login' initial={true} hideNavBar={true} type={ActionConst.REPLACE} />
                 <Scene component={Setcdp} key='Setcdp' name='Setcdp' hideNavBar={true} type={ActionConst.REPLACE} />
-                <Scene component={Search} key='Search' name='Search' title="Tool PassDown" hideNavBar={false} type={ActionConst.REPLACE} />
+                <Scene component={PassdownSummary} key='PassdownSummary' name='PassdownSummary' title="Tool PassDown" hideNavBar={false} type={ActionConst.REPLACE} />
+                <Scene component={Search} key='Search' name='Search' title="Tool PassDown" hideNavBar={false} />
                 <Scene component={PassdownList} key='PassdownList' name='PassdownList' title="PassDown List" hideNavBar={false} />
                 <Scene component={PassdownView} key='PassdownView' name='PassdownView' title="PassDown View" hideNavBar={false} />
                 <Scene component={EditPassdown} key='EditPassdown' name='EditPassdown' title="PassDown Edit" hideNavBar={false} />

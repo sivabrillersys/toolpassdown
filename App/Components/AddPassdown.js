@@ -57,65 +57,67 @@ export default class SetCdp extends Component {
   render() {
   
     return (
-      <ScrollView 
-        showsVerticalScrollIndicator={true}
-        automaticallyAdjustContentInsets={false}
-        onScroll={() => { console.log('onScroll!'); }}
-        scrollEventThrottle={200}
-        style={styles.scrollView}>
+      <View style={styles.containerBody}>
+        <ScrollView 
+          showsVerticalScrollIndicator={true}
+          automaticallyAdjustContentInsets={false}
+          onScroll={() => { console.log('onScroll!'); }}
+          scrollEventThrottle={200}
+          style={styles.scrollView}>
 
-        <View style={styles.containerBox}>
-        
-          <Text style={styles.label}>Equipment Type<Text style={styles.mandatory}>*</Text></Text>         
-          <TextInput style={styles.input} editable={false} value='' />
-
-          <Text style={styles.label}>Equipment<Text style={styles.mandatory}>*</Text></Text>         
-          <TextInput style={styles.input} editable={false} value='' />
-
-          <Text style={styles.label}>Date<Text style={styles.mandatory}>*</Text></Text>
-          <DatePicker
-            style={styles.input}
-            date={this.state.toDay}
-            mode="datetime"
-            placeholder="placeholder"
-            format="MM/DD/YYYY hh:mm A"
-            confirmBtnText="Confirm"
-            cancelBtnText="Cancel"
-            showIcon={false}
-            onDateChange={(date) => {this.setState({toDay: date})}} />
-
-          <Text style={styles.label}>State<Text style={styles.mandatory}>*</Text></Text>         
-          <TextInput style={styles.input} editable={false} value='' />
-
-          <Text style={styles.label}>Substate<Text style={styles.mandatory}>*</Text></Text>         
-          <TextInput style={styles.input} editable={false} value='' />
+          <View style={styles.containerBox}>
           
-          <Text style={styles.label}>Substrate Type</Text>         
-          <TextInput style={styles.input} editable={false} value='' />
+            <Text style={styles.label}>Equipment Type<Text style={styles.mandatory}>*</Text></Text>         
+            <TextInput style={styles.input} editable={false} value='' />
 
-          <Text style={styles.label}>Issue<Text style={styles.mandatory}>*</Text></Text>         
-          <TextInput style={styles.input} editable={false} value='' />
+            <Text style={styles.label}>Equipment<Text style={styles.mandatory}>*</Text></Text>         
+            <TextInput style={styles.input} editable={false} value='' />
 
-          <Text style={styles.label}>Sub-Issue<Text style={styles.mandatory}>*</Text></Text>         
-          <TextInput style={styles.input} editable={false} value='' />
+            <Text style={styles.label}>Date<Text style={styles.mandatory}>*</Text></Text>
+            <DatePicker
+              style={styles.input}
+              date={this.state.toDay}
+              mode="datetime"
+              placeholder="placeholder"
+              format="MM/DD/YYYY hh:mm A"
+              confirmBtnText="Confirm"
+              cancelBtnText="Cancel"
+              showIcon={false}
+              onDateChange={(date) => {this.setState({toDay: date})}} />
 
-          <Text style={styles.label}>Passdown<Text style={styles.mandatory}>*</Text></Text>         
-          <TextInput style={styles.input} multiline={true} value='' />
+            <Text style={styles.label}>State<Text style={styles.mandatory}>*</Text></Text>         
+            <TextInput style={styles.input} editable={false} value='' />
 
-          <Text style={styles.label}>Prior Activites</Text>         
-          <TextInput style={styles.input} multiline={true} value='' />
+            <Text style={styles.label}>Substate<Text style={styles.mandatory}>*</Text></Text>         
+            <TextInput style={styles.input} editable={false} value='' />
+            
+            <Text style={styles.label}>Substrate Type</Text>         
+            <TextInput style={styles.input} editable={false} value='' />
 
-          <Text style={styles.label}>Actions Taken</Text>         
-          <TextInput style={styles.input} multiline={true} value='' />
+            <Text style={styles.label}>Issue<Text style={styles.mandatory}>*</Text></Text>         
+            <TextInput style={styles.input} editable={false} value='' />
 
-          <Text style={styles.label}>Error Messages</Text>         
-          <TextInput style={styles.input} multiline={true} value='' />
+            <Text style={styles.label}>Sub-Issue<Text style={styles.mandatory}>*</Text></Text>         
+            <TextInput style={styles.input} editable={false} value='' />
 
-          <TouchableOpacity onPress={this._onPressButton.bind(this)} style={styles.button} activeOpacity={0.8}>
-            <Text style={styles.buttonText}>Get PassDown</Text>
-          </TouchableOpacity>
+            <Text style={styles.label}>Passdown<Text style={styles.mandatory}>*</Text></Text>         
+            <TextInput style={styles.input} multiline={true} value='' />
+
+            <Text style={styles.label}>Prior Activites</Text>         
+            <TextInput style={styles.input} multiline={true} value='' />
+
+            <Text style={styles.label}>Actions Taken</Text>         
+            <TextInput style={styles.input} multiline={true} value='' />
+
+            <Text style={styles.label}>Error Messages</Text>         
+            <TextInput style={styles.input} multiline={true} value='' />
+
+          </View>
+        </ScrollView>
+        <View style={styles.footer}>
+          <Text>dddd</Text>
         </View>
-      </ScrollView>
+      </View>
     );
   }
 }
