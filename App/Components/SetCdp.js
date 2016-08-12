@@ -70,7 +70,6 @@ export default class SetCdp extends Component {
 
       //Backend Call
       relayURL = relayURL + '?method=DoLogin&id=1&UserName=' + this.state.uname + '&Password=' + this.state.password + '&CDPName=' + this.state.cdp;
-      //var params = {id: 1, UserName: this.state.uname, Password: this.state.password, CDPName: this.state.cdp};
 
       fetch(relayURL, {
         method: "GET", 
@@ -80,8 +79,10 @@ export default class SetCdp extends Component {
       })
       .then((response) => { 
 
-        // console.log(response);
+        //console.log(response);
         // response.json() 
+
+        // if (response.ok && response._bodyText==1) {
 
         if (response.ok) {
 
@@ -92,6 +93,10 @@ export default class SetCdp extends Component {
 
           //Redirect to Search Page on success
           // Actions.Search();
+        }
+        else {
+          this.setState({message: "ERROR! can't continue.."});
+          this.setState({showProgress: false});     
         }
 
       })

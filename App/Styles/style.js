@@ -12,7 +12,7 @@ var styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#FFF',
-    padding: 10
+    marginTop: 64,
   },
   containerBox: {
     backgroundColor: '#FFF',
@@ -105,7 +105,67 @@ var styles = StyleSheet.create({
     backgroundColor:'#00467f',
     flexDirection:'row',
     height:45,
-  }
+  },
+  row: {
+    flexDirection: 'row',
+    paddingHorizontal: 10,
+    paddingVertical: 8
+  },
+  rowOdd: {
+    backgroundColor: '#FFFFFF',
+  },
+  rowEven: {
+    backgroundColor: '#F5F5F5',
+  },
+  separator: {
+    flex: 1,
+    height: StyleSheet.hairlineWidth,
+    backgroundColor: '#F5F5F5',
+  },
+  passIconRow: {
+    width: 25,
+    flexDirection:'row',
+    paddingTop: 20,
+  },
+  passDataRow: {
+    flex: 1,
+    flexDirection:'column',
+  },
+  passRow: {
+    flexDirection:'row',
+    paddingBottom: 3,
+  },
+  equipName: {
+    fontSize: 14,
+    fontWeight: 'bold',
+    flex: 1,
+  },
+  equipType: {
+    fontSize: 13,
+    flex: 1,
+  },
+  passDate: {
+    fontSize: 11,
+    color: '#999',
+    textAlign: 'right',
+  },
+  passVIcon: {
+    color: '#999',
+    justifyContent: 'flex-end'
+  },
+  passStatus: {
+    fontSize: 14,
+    fontWeight: 'bold',
+  },
+  subStrate: {
+    fontSize: 11,
+    fontWeight: 'bold',
+    color: '#333',
+  },
+  passDesc: {
+    fontSize: 11,
+    color: '#777',
+  },
 });
 
 module.exports= styles;
