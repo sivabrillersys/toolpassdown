@@ -90,6 +90,20 @@ var styles = StyleSheet.create({
     fontSize: 24,
     color: '#666'
   },
+  quickContainer: {
+    backgroundColor: '#DDD',
+    paddingVertical: 5,
+    paddingHorizontal: 5,
+  },
+  quickinput: {
+    borderWidth: 1,
+    borderColor: '#EEE',
+    backgroundColor: '#FFFFFF',
+    height: 30,
+    paddingVertical: 3,
+    paddingHorizontal: 5,  
+    borderRadius: 5,
+  },
   error: {
     alignSelf: 'center',
     color: '#FF0000',

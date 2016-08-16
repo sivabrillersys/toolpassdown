@@ -18,6 +18,7 @@ import {
 import {Actions} from 'react-native-router-flux';
 import DatePicker from 'react-native-datepicker';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import QuickSearch from './QuickSearch';
 import styles from '../Styles/style';
 
 var moment = require('moment');
@@ -134,11 +135,14 @@ export default class PassdownSummary extends Component {
   }
 
   _onPressButton() {
-    
+   
+    //Redirect to PassDown View Page
+    Actions.PassdownView(); 
   }
 
-  _onPressAddButton() {  
-    //Redirect to Add Pass Down Page
+  _onPressAddButton() { 
+
+    //Redirect to Add PassDown Page
     Actions.AddPassdown(); 
   }
 
@@ -146,6 +150,8 @@ export default class PassdownSummary extends Component {
   
     return (
       <View style={styles.container}>
+
+        <QuickSearch />
 
         <ListView
         dataSource={this.state.dataSource}

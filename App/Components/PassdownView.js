@@ -32,7 +32,7 @@ export default class AddPassdown extends Component {
           Welcome!
         </Text>
         <Text style={styles.instructions}>
-          Pass Down ADD!
+          Pass Down VIEW!
         </Text>
         <Text style={styles.instructions}>
           Press Cmd+R to reload,{'\n'}

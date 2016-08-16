@@ -27,8 +27,8 @@ export default class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      uname: '',
-      password: '',
+      uname: 'ramesh.palleri',
+      password: 'briller@inter1',
       message: '',
       showProgress: false
     };    
