@@ -12,6 +12,7 @@ import { Router, Scene, ActionConst } from 'react-native-router-flux';
 
 import styles from '../Styles/style';
 
+import TouchLogin from './TouchLogin';
 import Login from './Login';
 import Setcdp from './SetCdp';
 import Search from './Search';
@@ -41,7 +42,8 @@ export default class RootRouter extends Component {
         return (
         <Router navigationBarStyle={styles.navBar} titleStyle={styles.navBarTitle} barButtonTextStyle={styles.barButtonTextStyle} barButtonIconStyle={styles.barButtonIconStyle}>
             <Scene key="root">
-                <Scene component={Login} key='Login' name='Login' initial={true} hideNavBar={true} type={ActionConst.REPLACE} />
+                <Scene component={TouchLogin} key='TouchLogin' name='TouchLogin' initial={true} hideNavBar={true} type={ActionConst.REPLACE} />
+                <Scene component={Login} key='Login' name='Login' hideNavBar={true} type={ActionConst.REPLACE} />
                 <Scene component={Setcdp} key='Setcdp' name='Setcdp' hideNavBar={true} type={ActionConst.REPLACE} />
                 <Scene component={PassdownSummary} key='PassdownSummary' name='PassdownSummary' title="Tool PassDown" hideNavBar={false} type={ActionConst.REPLACE} />
                 <Scene component={Search} key='Search' name='Search' title="Tool PassDown" hideNavBar={false} />

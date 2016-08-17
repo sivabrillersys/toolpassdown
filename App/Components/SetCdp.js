@@ -69,7 +69,7 @@ export default class SetCdp extends Component {
       AsyncStorage.setItem('CDP', this.state.cdp);
 
       //Backend Call
-      relayURL = relayURL + '?method=DoLogin&id=1&UserName=' + this.state.uname + '&Password=' + this.state.password + '&CDPName=' + this.state.cdp;
+      relayURL = relayURL + '?method=doLogin&id=1&UserName=' + this.state.uname + '&Password=' + this.state.password + '&CDPName=' + this.state.cdp;
 
       fetch(relayURL, {
         method: "GET", 
@@ -79,7 +79,7 @@ export default class SetCdp extends Component {
       })
       .then((response) => { 
 
-        //console.log(response);
+        console.log(response);
         // response.json() 
 
         // if (response.ok && response._bodyText==1) {
