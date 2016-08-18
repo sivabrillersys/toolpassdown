@@ -10,75 +10,36 @@ import {
 } from 'react-native';
 
 import TouchID from "react-native-touch-id";
-import PasscodeAuth from "react-native-passcode-auth";
+import {Actions} from 'react-native-router-flux';
 
 export default class TouchIDExample extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+    };
+    
+    this._authHandler();
+
+  }
+
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          react-native-touch-id
-        </Text>
-
-        <Text style={styles.instructions}>
-          github.com/naoufal/react-native-touch-id
-        </Text>
-        <TouchableHighlight
-          style={styles.btn}
-          onPress={this._clickHandler}
-          underlayColor="#0380BE"
-          activeOpacity={1}
-        >
-          <Text style={{
-            color: '#fff',
-            fontWeight: '600'
-          }}>
-            Authenticate with Touch ID
-          </Text>
-        </TouchableHighlight>
+      <View>
       </View>
     );
   }
 
-  _clickHandler() {
-    console.log(TouchID);
+  _authHandler() {
+    //console.log(TouchID);
     TouchID.isSupported()
       .then(authenticate)
       .catch(error => {
-        passcodeAuth();
+        //Redirect to login if TouchID not supported
+        Actions.Login();  
       });
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF'
-  },
-  welcome: {
-    margin: 10,
-    fontSize: 20,
-    fontWeight: '600',
-    textAlign: 'center'
-  },
-  instructions: {
-    marginBottom: 5,
-    color: '#333333',
-    fontSize: 13,
-    textAlign: 'center'
-  },
-  btn: {
-    borderRadius: 3,
-    marginTop: 200,
-    paddingTop: 15,
-    paddingBottom: 15,
-    paddingLeft: 15,
-    paddingRight: 15,
-    backgroundColor: '#0391D7'
-  }
-});
 
 const errors = {
   "LAErrorAuthenticationFailed": "Authentication was not successful because the user failed to provide valid credentials.",
@@ -95,21 +56,10 @@ const errors = {
 function authenticate() {
   return TouchID.authenticate()
     .then(success => {
-      AlertIOS.alert('Authenticated Successfully');
-    })
-    .catch(error => {
-      console.log(error)
-      AlertIOS.alert(error.message);
-    });
-}
 
-function passcodeAuth() {
-  return PasscodeAuth.isSupported()
-    .then(() => {
-      return PasscodeAuth.authenticate()
-    })
-    .then(success => {
       AlertIOS.alert('Authenticated Successfully');
+
+
     })
     .catch(error => {
       console.log(error)
