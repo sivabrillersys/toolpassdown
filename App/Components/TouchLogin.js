@@ -56,10 +56,8 @@ const errors = {
 function authenticate() {
   return TouchID.authenticate()
     .then(success => {
-
-      AlertIOS.alert('Authenticated Successfully');
-
-
+      //Redirect to login if TouchID not supported
+      Actions.Login();
     })
     .catch(error => {
       console.log(error)

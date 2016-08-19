@@ -139,7 +139,7 @@ var styles = StyleSheet.create({
   passIconRow: {
     width: 25,
     flexDirection:'row',
-    paddingTop: 20,
+    paddingTop: 23,
   },
   passDataRow: {
     flex: 1,
@@ -150,7 +150,7 @@ var styles = StyleSheet.create({
     paddingBottom: 3,
   },
   equipName: {
-    fontSize: 14,
+    fontSize: 16,
     fontWeight: 'bold',
     flex: 1,
   },
@@ -159,7 +159,7 @@ var styles = StyleSheet.create({
     flex: 1,
   },
   passDate: {
-    fontSize: 11,
+    fontSize: 12,
     color: '#999',
     textAlign: 'right',
   },
@@ -168,16 +168,16 @@ var styles = StyleSheet.create({
     justifyContent: 'flex-end'
   },
   passStatus: {
-    fontSize: 14,
+    fontSize: 16,
     fontWeight: 'bold',
   },
   subStrate: {
-    fontSize: 11,
+    fontSize: 13,
     fontWeight: 'bold',
     color: '#333',
   },
   passDesc: {
-    fontSize: 11,
+    fontSize: 13,
     color: '#777',
   },
 });

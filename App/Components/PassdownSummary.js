@@ -107,7 +107,7 @@ export default class PassdownSummary extends Component {
         <View style={[styles.row, highlight]}>
 
           <View style={styles.passIconRow}>
-            <Icon name={stateIcon} size={18} color={statColor} />
+            <Icon name={stateIcon} size={20} color={statColor} />
           </View>
 
           <View style={styles.passDataRow}>
@@ -137,7 +137,7 @@ export default class PassdownSummary extends Component {
   _onPressButton() {
    
     //Redirect to PassDown View Page
-    Actions.PassdownView(); 
+    // Actions.PassdownView(); 
   }
 
   _onPressAddButton() { 

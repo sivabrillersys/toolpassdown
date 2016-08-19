@@ -1,6 +1,8 @@
 package com.toolspassdown;
 
 import com.facebook.react.ReactActivity;
+import com.wix.RNCameraKit.RNCameraKitPackage;
+import com.lwansbrough.ReactCamera.ReactCamera;
 import com.oblador.vectoricons.VectorIconsPackage;
 
 public class MainActivity extends ReactActivity {
