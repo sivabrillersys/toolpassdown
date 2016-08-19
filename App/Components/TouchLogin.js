@@ -1,4 +1,3 @@
-'use strict';
 import React, { Component } from 'react';
 import {
   AlertIOS,
@@ -35,6 +34,7 @@ export default class TouchIDExample extends Component {
     TouchID.isSupported()
       .then(authenticate)
       .catch(error => {
+        console.log('TouchID Not Supported!');
         //Redirect to login if TouchID not supported
         Actions.Login();  
       });
