@@ -182,6 +182,8 @@ export default class SetCdp extends Component {
             </TouchableOpacity>
 
             <View>
+               {this.state.attachments ? this.state.attachments.map(i => <Image style={[styles.preview, styles.previewContainer, {marginBottom: 7}]} source={i} />) : null}
+            </View>
 
             <TouchableOpacity onPress={this._onPressAddButton.bind(this)} style={[styles.button, {marginBottom: 15}]} activeOpacity={0.8}>
               <Text style={styles.buttonText}>Add PassDown</Text>
