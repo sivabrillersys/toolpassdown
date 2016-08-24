@@ -8,6 +8,7 @@ import {
   AppRegistry,
   AsyncStorage,
   StyleSheet,
+  Image,
   Text,
   TextInput,
   Picker,
@@ -20,6 +21,9 @@ import {Actions} from 'react-native-router-flux';
 import ModalPicker from 'react-native-modal-picker';
 import DatePicker from 'react-native-datepicker';
 import Icon from 'react-native-vector-icons/FontAwesome';
+
+var Platform = require('react-native').Platform;
+var ImagePicker = require('react-native-image-picker');
 
 var moment = require('moment');
 
@@ -36,13 +40,25 @@ export default class SetCdp extends Component {
       equipmentType: '',
       equipment: '',
       toDay: moment().format('MM/DD/YYYY hh:mm A'),
+      passState: '',
+      subState: '',
+      substrateType: '',
+      issue: '',
+      subIssue: '',
+      passDown: '',
+      priorActivity: '',
+      actionsTaken: '',
+      errorMessages: '',
+      attachments: [],
+      avatarSource: null,
+
       searchText: '',
       equipTypeList: [],
       equipmentList: []
     };
   }
 
-  componentDidMount() {  
+  componentDidMount() {
 
   }
 
@@ -54,6 +70,51 @@ export default class SetCdp extends Component {
     
   }
 
+  selectPhotoTapped() {
+    const options = {
+      quality: 1.0,
+      maxWidth: 500,
+      maxHeight: 500,
+      storageOptions: {
+        skipBackup: true
+      }
+    };
+
+    ImagePicker.showImagePicker(options, (response) => {
+      //console.log('Response = ', response);
+
+      if (response.didCancel) {
+        console.log('User cancelled photo picker');
+      }
+      else if (response.error) {
+        console.log('ImagePicker Error: ', response.error);
+      }
+      else if (response.customButton) {
+        console.log('User tapped custom button: ', response.customButton);
+      }
+      else {
+        var source;
+
+        // You can display the image using either:
+        source = {uri: 'data:image/jpeg;base64,' + response.data, isStatic: true};
+
+        // Or:
+        // if (Platform.OS === 'android') {
+        //   source = {uri: response.uri, isStatic: true};
+        // } else {
+        //   source = {uri: response.uri.replace('file://', ''), isStatic: true};
+        // }
+
+        var newArray = this.state.attachments.slice();    
+        newArray.push(source);   
+        this.setState({attachments:newArray})
+        //console.log(this.state.attachments);
+        
+        //this.setState({ avatarSource: source }); 
+      }
+    });
+  }
+
   render() {
   
     return (
@@ -61,7 +122,6 @@ export default class SetCdp extends Component {
         <ScrollView 
           showsVerticalScrollIndicator={true}
           automaticallyAdjustContentInsets={false}
-          onScroll={() => { console.log('onScroll!'); }}
           scrollEventThrottle={200}
           style={styles.scrollView}>
 
@@ -90,7 +150,10 @@ export default class SetCdp extends Component {
 
             <Text style={styles.label}>Substate<Text style={styles.mandatory}>*</Text></Text>         
             <TextInput style={styles.input} editable={false} value='' />
-            
+
+            <Text style={styles.label}>CDP<Text style={styles.mandatory}>*</Text></Text>         
+            <TextInput style={styles.input} editable={false} value='' />
+
             <Text style={styles.label}>Substrate Type</Text>         
             <TextInput style={styles.input} editable={false} value='' />
 
@@ -112,11 +175,20 @@ export default class SetCdp extends Component {
             <Text style={styles.label}>Error Messages</Text>         
             <TextInput style={styles.input} multiline={true} value='' />
 
+            <TouchableOpacity onPress={this.selectPhotoTapped.bind(this)}>
+              <View style={styles.selectPhoto}>
+                <Text>Attach a Photo</Text>
+              </View>
+            </TouchableOpacity>
+
+            <View>
+
+            <TouchableOpacity onPress={this._onPressAddButton.bind(this)} style={[styles.button, {marginBottom: 15}]} activeOpacity={0.8}>
+              <Text style={styles.buttonText}>Add PassDown</Text>
+            </TouchableOpacity> 
+
           </View>
         </ScrollView>
-        <View style={styles.footer}>
-          <Text>dddd</Text>
-        </View>
       </View>
     );
   }

@@ -8,11 +8,10 @@ console.disableYellowBox = true;
 
 import React, { Component } from 'react';
 import { AsyncStorage } from 'react-native';
-import { Router, Scene, ActionConst } from 'react-native-router-flux';
+import { Router, Scene, ActionConst,Actions } from 'react-native-router-flux';
 
 import styles from '../Styles/style';
 
-import CameraApp from './CameraApp';
 import TouchLogin from './TouchLogin';
 import Login from './Login';
 import Setcdp from './SetCdp';
@@ -43,16 +42,15 @@ export default class RootRouter extends Component {
         return (
         <Router navigationBarStyle={styles.navBar} titleStyle={styles.navBarTitle} barButtonTextStyle={styles.barButtonTextStyle} barButtonIconStyle={styles.barButtonIconStyle}>
             <Scene key="root">
-                <Scene component={CameraApp} key='CameraApp' name='CameraApp' hideNavBar={true} type={ActionConst.REPLACE} />
-                <Scene component={TouchLogin} key='TouchLogin' name='TouchLogin' initial={true} hideNavBar={true} type={ActionConst.REPLACE} />
+                <Scene component={TouchLogin} key='TouchLogin' name='TouchLogin' hideNavBar={true} type={ActionConst.REPLACE} />
                 <Scene component={Login} key='Login' name='Login' hideNavBar={true} type={ActionConst.REPLACE} />
                 <Scene component={Setcdp} key='Setcdp' name='Setcdp' hideNavBar={true} type={ActionConst.REPLACE} />
                 <Scene component={PassdownSummary} key='PassdownSummary' name='PassdownSummary' title="Tool PassDown" hideNavBar={false} type={ActionConst.REPLACE} />
-                <Scene component={Search} key='Search' name='Search' title="Tool PassDown" hideNavBar={false} />
+                <Scene component={Search} key='Search' name='Search' title="Search PassDown" hideNavBar={false} />
                 <Scene component={PassdownList} key='PassdownList' name='PassdownList' title="PassDown List" hideNavBar={false} />
                 <Scene component={PassdownView} key='PassdownView' name='PassdownView' title="PassDown View" hideNavBar={false} />
                 <Scene component={EditPassdown} key='EditPassdown' name='EditPassdown' title="PassDown Edit" hideNavBar={false} />
-                <Scene component={AddPassdown} key='AddPassdown' name='AddPassdown' title="Add PassDown" hideNavBar={false} />
+                <Scene component={AddPassdown} key='AddPassdown' name='AddPassdown' initial={true} title="Add PassDown" hideNavBar={false} onBack={()=>Actions.PassdownSummary()} />
             </Scene>
         </Router>
         );

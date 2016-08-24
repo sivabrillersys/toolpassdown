@@ -22,6 +22,33 @@ export default class AddPassdown extends Component {
     this.state = {
 
     };
+
+    //Get Equipments
+    var service = 'mobilePassDown.component.PassDown';
+    var method = 'getEquipmentList';
+    var args = {};
+
+    var rpc = {
+        action: 'Relay'
+        , method: "binaryExecute"
+        , data: [service, method, args]
+        , type: 'rpc'
+        , tid: 2
+    };
+
+    fetch(serviceURL, {
+      method: "POST", 
+      contentType: 'application/json',
+      body: JSON.stringify(rpc)
+    })
+    .then((response) => response.json())
+    .then((responseData) => {
+
+
+        console.log(responseData);
+    
+    })
+    .done();  
   }
 
   render() {

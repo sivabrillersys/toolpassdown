@@ -1,7 +1,9 @@
 var React = require('react-native');
 
 var {
-    StyleSheet,
+  StyleSheet,
+  Dimensions,
+  PixelRatio,
 } = React;
 
 var styles = StyleSheet.create({
@@ -19,6 +21,18 @@ var styles = StyleSheet.create({
     marginTop: 80,
     paddingHorizontal: 25
   },
+  modalContainer: {
+    flex: 1,
+    backgroundColor: 'rgba(0, 0, 0, 0.7)',    
+    paddingTop: 40,
+    paddingHorizontal: 25
+  },
+  modalContainerBox: {
+    backgroundColor: '#FFF',    
+    paddingVertical: 25,
+    paddingHorizontal: 25,
+    borderRadius: 5,
+  },
   header: {
     flex:1,
     justifyContent: 'center',
@@ -34,6 +48,12 @@ var styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     padding: 8,
+  },
+  loadingFull: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 8,
+    flex: 1,
   },
   navBar: {
     backgroundColor:'#00467f',
@@ -91,18 +111,42 @@ var styles = StyleSheet.create({
     color: '#666'
   },
   quickContainer: {
-    backgroundColor: '#DDD',
-    paddingVertical: 5,
-    paddingHorizontal: 5,
+    backgroundColor: '#FFF',
+    flexDirection:'row',
+    borderTopColor: '#bbb',
+    borderTopWidth: StyleSheet.hairlineWidth,
+    position: 'absolute',
+    flex:0.1,
+    left: 0,
+    right: 0,
+    bottom: 0,
   },
   quickinput: {
     borderWidth: 1,
     borderColor: '#EEE',
     backgroundColor: '#FFFFFF',
-    height: 30,
+    height: 34,
     paddingVertical: 3,
     paddingHorizontal: 5,  
     borderRadius: 5,
+    flex: 1,
+  },
+  quickAdd: {
+    paddingVertical: 8,
+    flex: .5,
+    borderRightColor: '#bbb',
+    borderRightWidth: StyleSheet.hairlineWidth
+  },
+  quickButtonText: {
+    fontSize: 14,
+    textAlign: 'center',
+    color: '#666',
+  },
+  quickIcon: {
+    color: '#FFF',
+    textAlign: 'center',
+    fontWeight: 'bold',
+    marginTop: 3,
   },
   error: {
     alignSelf: 'center',
@@ -179,6 +223,23 @@ var styles = StyleSheet.create({
   passDesc: {
     fontSize: 13,
     color: '#777',
+  },
+  selectPhoto: {
+    borderColor: '#9B9B9B',
+    borderWidth: 1 / PixelRatio.get(),
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingVertical: 5,
+    marginVertical: 5,
+  },
+  previewContainer: {
+    borderColor: '#9B9B9B',
+    borderWidth: 1 / PixelRatio.get(),
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  preview: {
+    height: 150,
   },
 });
 
